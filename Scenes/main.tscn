@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckfo16al661lh"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_3i1qt"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3i1qt")
+
+[node name="TextEdit" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+dragger_visibility = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TextEdit"]
+layout_mode = 2
+
+[node name="LiteralButton" type="Button" parent="TextEdit/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Copy Literal Text"
+
+[node name="ClearButton" type="Button" parent="TextEdit/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Clear Text"
+
+[node name="CopyButton" type="Button" parent="TextEdit/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Copy Raw Text"
+
+[node name="PanelContainer2" type="PanelContainer" parent="TextEdit"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="TextEdit/PanelContainer2"]
+layout_mode = 2
+placeholder_text = "Type your text here!"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
