@@ -1,7 +1,19 @@
 extends Control
 
+@export_category("Text Editor Options")
+
 @export var TextEditObject: TextEdit = null
 
+@export_category("Option Buttons")
+
+@export var TabDetect: CheckButton = null
+@export var BackspaceDetect: CheckButton = null
+@export var NewLineDetect: CheckButton = null
+@export var CarriageDetect: CheckButton = null
+@export var FormFeedDetect: CheckButton = null
+@export var SingleQuoteDetect: CheckButton = null
+@export var DoubleQuoteDetect: CheckButton = null
+@export var BackslashDetect: CheckButton = null
 
 func _on_literal_button_button_down():
 	DisplayServer.clipboard_set(LiteralExtractor(TextEditObject.text))
@@ -18,10 +30,23 @@ func _on_copy_button_button_down():
 func LiteralExtractor(text: String) -> String:
 	var converted = ""
 	for i in range(len(text)):
-		if text[i] == "\n":
+		if text[i] == "\n" and NewLineDetect.button_pressed:
 			converted += "\\n"
-		elif text == "\t":
+		elif text[i] == "\t" and TabDetect.button_pressed:
 			converted += "\\t"
+		elif text[i] == "\r" and CarriageDetect.button_pressed:
+			converted += "\\r"
+		elif text[i] == "\f" and FormFeedDetect.button_pressed:
+			converted += "\\f"
+		elif text[i] == "\\" and BackslashDetect.button_pressed:
+			converted += "\\\\"
+		elif text[i] == "\b" and BackspaceDetect.button_pressed:
+			converted += "\\b"
+		elif text[i] == '"' and DoubleQuoteDetect.button_pressed:
+			converted += '\\"'
+		elif text[i] == "'" and SingleQuoteDetect.button_pressed:
+			converted += "\\'"
 		else:
 			converted += text[i]
+		
 	return converted

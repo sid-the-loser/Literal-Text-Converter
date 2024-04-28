@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3i1qt"]
 
-[node name="Main" type="Control" node_paths=PackedStringArray("TextEditObject")]
+[node name="Main" type="Control" node_paths=PackedStringArray("TextEditObject", "TabDetect", "BackspaceDetect", "NewLineDetect", "CarriageDetect", "FormFeedDetect", "SingleQuoteDetect", "DoubleQuoteDetect", "BackslashDetect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3i1qt")
 TextEditObject = NodePath("TabContainer/TextEditor/PanelContainer2/TextEdit")
+TabDetect = NodePath("TabContainer/Options/TabDetection")
+BackspaceDetect = NodePath("TabContainer/Options/BackspaceDetection")
+NewLineDetect = NodePath("TabContainer/Options/NewLineDetect")
+CarriageDetect = NodePath("TabContainer/Options/CarriageDetection")
+FormFeedDetect = NodePath("TabContainer/Options/FormFeedDetection")
+SingleQuoteDetect = NodePath("TabContainer/Options/SingleQuoteDetection")
+DoubleQuoteDetect = NodePath("TabContainer/Options/DoubleQuoteDetection")
+BackslashDetect = NodePath("TabContainer/Options/BackslashDetection")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -65,9 +73,53 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TestButton" type="Button" parent="TabContainer/Options"]
+[node name="TabDetection" type="CheckButton" parent="TabContainer/Options"]
 layout_mode = 2
-text = "Test"
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\t detection"
+
+[node name="BackspaceDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\b detection"
+
+[node name="NewLineDetect" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\n detection"
+
+[node name="CarriageDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\r detection"
+
+[node name="FormFeedDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\f detection"
+
+[node name="SingleQuoteDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\' detection"
+
+[node name="DoubleQuoteDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\\" detection"
+
+[node name="BackslashDetection" type="CheckButton" parent="TabContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "\\\\ detection"
 
 [connection signal="button_down" from="TabContainer/TextEditor/PanelContainer/LiteralButton" to="." method="_on_literal_button_button_down"]
 [connection signal="button_up" from="TabContainer/TextEditor/PanelContainer/ClearButton" to="." method="_on_clear_button_button_up"]
