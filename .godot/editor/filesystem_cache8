@@ -1,7 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1714265854
+::res://::1714287174
 icon.svg::CompressedTexture2D::7788746983371029639::1714241414::1714241419::1::::<><>::
-::res://Scenes/::1714285973
-main.tscn::PackedScene::5485949789843402029::1714285973::0::1::::<><>::res://Scripts/main.gd
-::res://Scripts/::1714285824
-main.gd::GDScript::-1::1714285823::0::1::::<>Control<>::
+README.md::TextFile::-1::1714286591::0::1::::<><>::
+::res://Fonts/::1714286577
+JetBrainsMono-VariableFont_wght.ttf::FontFile::5930408271341168434::1714286331::1714286577::1::::<><>::
+OFL.txt::TextFile::-1::1714286355::0::1::::<><>::
+::res://Scenes/::1714287168
+main.tscn::PackedScene::5485949789843402029::1714287168::0::1::::<><>::res://Scripts/main.gd
+::res://Scripts/::1714287084
+main.gd::GDScript::-1::1714287084::0::1::::<>Control<>::

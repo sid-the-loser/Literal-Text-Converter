@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[gui]
+
+theme/custom_font="res://Fonts/JetBrainsMono-VariableFont_wght.ttf"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
