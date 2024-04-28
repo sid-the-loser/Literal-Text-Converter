@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_3i1qt"]
 
-[node name="Main" type="Control" node_paths=PackedStringArray("TextEditObject", "TabDetect", "BackspaceDetect", "NewLineDetect", "CarriageDetect", "FormFeedDetect", "SingleQuoteDetect", "DoubleQuoteDetect", "BackslashDetect")]
+[node name="Main" type="Control" node_paths=PackedStringArray("TextEditObject", "TabDetect", "BackspaceDetect", "NewLineDetect", "CarriageDetect", "FormFeedDetect", "SingleQuoteDetect", "DoubleQuoteDetect", "BackslashDetect", "OpenFileDialogue")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ FormFeedDetect = NodePath("TabContainer/Options/FormFeedDetection")
 SingleQuoteDetect = NodePath("TabContainer/Options/SingleQuoteDetection")
 DoubleQuoteDetect = NodePath("TabContainer/Options/DoubleQuoteDetection")
 BackslashDetect = NodePath("TabContainer/Options/BackslashDetection")
+OpenFileDialogue = NodePath("OpenFileDialogue")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -27,28 +28,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tab_alignment = 1
 
 [node name="TextEditor" type="HSplitContainer" parent="TabContainer"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/TextEditor"]
+[node name="PanelContainer" type="VBoxContainer" parent="TabContainer/TextEditor"]
 layout_mode = 2
-
-[node name="LiteralButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Copy Literal Text"
 
 [node name="ClearButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Clear Text"
 
+[node name="LiteralButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Copy Literal Text"
+
 [node name="CopyButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Copy Raw Text"
+
+[node name="OpenFileButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Open a File"
+
+[node name="AppendFileButton" type="Button" parent="TabContainer/TextEditor/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Open and Append"
 
 [node name="PanelContainer2" type="PanelContainer" parent="TabContainer/TextEditor"]
 layout_mode = 2
@@ -121,6 +133,16 @@ size_flags_horizontal = 4
 button_pressed = true
 text = "\\\\ detection"
 
-[connection signal="button_down" from="TabContainer/TextEditor/PanelContainer/LiteralButton" to="." method="_on_literal_button_button_down"]
+[node name="OpenFileDialogue" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
 [connection signal="button_up" from="TabContainer/TextEditor/PanelContainer/ClearButton" to="." method="_on_clear_button_button_up"]
+[connection signal="button_down" from="TabContainer/TextEditor/PanelContainer/LiteralButton" to="." method="_on_literal_button_button_down"]
 [connection signal="button_down" from="TabContainer/TextEditor/PanelContainer/CopyButton" to="." method="_on_copy_button_button_down"]
+[connection signal="button_up" from="TabContainer/TextEditor/PanelContainer/OpenFileButton" to="." method="_on_open_file_button_button_up"]
+[connection signal="button_up" from="TabContainer/TextEditor/PanelContainer/AppendFileButton" to="." method="_on_append_file_button_button_up"]
+[connection signal="file_selected" from="OpenFileDialogue" to="." method="_on_open_file_dialogue_file_selected"]

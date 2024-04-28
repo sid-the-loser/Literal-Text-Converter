@@ -15,6 +15,12 @@ extends Control
 @export var DoubleQuoteDetect: CheckButton = null
 @export var BackslashDetect: CheckButton = null
 
+@export_category("FileDialogues")
+
+@export var OpenFileDialogue: FileDialog = null
+
+var appendMode: bool = false
+
 func _on_literal_button_button_down():
 	DisplayServer.clipboard_set(LiteralExtractor(TextEditObject.text))
 
@@ -26,6 +32,25 @@ func _on_clear_button_button_up():
 func _on_copy_button_button_down():
 	DisplayServer.clipboard_set(TextEditObject.get_text())
 
+
+func _on_open_file_button_button_up():
+	appendMode = false
+	OpenFileDialogue.show()
+
+
+func _on_append_file_button_button_up():
+	appendMode = true
+	OpenFileDialogue.show()
+
+
+func _on_open_file_dialogue_file_selected(path):
+	if path != null:
+		var file = FileAccess.open(path, FileAccess.READ)
+		if appendMode:
+			TextEditObject.text += file.get_as_text()
+		else:
+			TextEditObject.text = file.get_as_text()
+	
 
 func LiteralExtractor(text: String) -> String:
 	var converted = ""

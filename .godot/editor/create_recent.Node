@@ -1,7 +1,8 @@
+FileDialog
+VBoxContainer
 CheckButton
 Button
 Label
-VBoxContainer
 TabContainer
 TextEdit
 PanelContainer
