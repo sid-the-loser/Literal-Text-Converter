@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://Sprites/SidTheLoserLogo.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://Sprites/SidTheLoserLogo.png"
-config/windows_native_icon="res://Sprites/SidTheLoserLogo.ico"
+config/icon="res://Sprites/Icon.png"
+config/windows_native_icon="res://Sprites/Icon.ico"
 
 [gui]
 
