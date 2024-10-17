@@ -29,10 +29,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="TextEditor" type="HSplitContainer" parent="TabContainer"]
 layout_mode = 2
 dragger_visibility = 1
+metadata/_tab_index = 0
 
 [node name="PanelContainer" type="VBoxContainer" parent="TabContainer/TextEditor"]
 layout_mode = 2
@@ -77,6 +79,7 @@ draw_spaces = true
 [node name="Options" type="VBoxContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Label" type="Label" parent="TabContainer/Options"]
 layout_mode = 2
